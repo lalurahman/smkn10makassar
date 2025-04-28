@@ -8,11 +8,14 @@
             href="{{ route('admin.dashboard') }}"
             class="app-brand-link"
         >
-            <span class="app-brand-text demo menu-text fw-bold ms-2">
+            <span class="app-brand-text demo menu-text fw-bold">
                 <img
                     src="{{ asset('admin/img/logo.png') }}"
                     width="100"
                 >
+            </span>
+            <span class="app-brand-text menu-text fw-bolder">SMKN 10 <br>
+                MAKASSAR
             </span>
         </a>
 

@@ -24,11 +24,11 @@
     property="og:description"
     content=""
 />
-{{-- <link
+<link
     rel="icon"
     type="image/x-icon"
-    href="{{ asset('admin/img/logo-sm.png') }}"
-/> --}}
+    href="{{ asset('admin/img/logo.png') }}"
+/>
 <!-- Fonts -->
 <link
     rel="preconnect"
