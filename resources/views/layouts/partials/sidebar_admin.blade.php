@@ -43,7 +43,7 @@
             <span class="menu-header-text">Admin</span>
         </li>
 
-        <li class="menu-item @if (request()->is('admin/banner*')) active open @endif">
+        <li class="menu-item @if (request()->is('admin/jurusan*')) active open @endif">
             <a
                 href="javascript:void(0);"
                 class="menu-link menu-toggle"

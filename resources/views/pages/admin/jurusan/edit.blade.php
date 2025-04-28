@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Banner')
+@section('title', 'Jurusan')
 
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
@@ -10,113 +10,71 @@
                     <a href="javascript:void(0);">Admin</a>
                     <i class="breadcrumb-icon icon-base bx bx-chevron-right align-middle"></i>
                 </li>
-                <li class="breadcrumb-item active">Banner</li>
+                <li class="breadcrumb-item active">Jurusan</li>
             </ol>
         </nav>
         <div
             class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-6 row-gap-4">
             <div class="d-flex flex-column justify-content-center">
-                <h4 class="mb-1">Data Banner</h4>
+                <h4 class="mb-1">Data Jurusan</h4>
             </div>
             <div class="d-flex align-content-center flex-wrap gap-4">
-                <button
-                    type="button"
-                    class="btn btn-primary"
-                    data-bs-toggle="modal"
-                    data-bs-target="#basicModal"
+                <a
+                    href="{{ route('admin.jurusan.index') }}"
+                    class="btn btn-secondary"
                 >
-                    <i class="icon-base bx bx-plus icon-sm me-0 me-sm-2"></i>
-                    Tambah Data
-                </button>
+                    <i class="icon-base bx bx-arrow-back icon-sm me-0 me-sm-2"></i>
+                    Kembali
+                </a>
             </div>
         </div>
 
         <!-- table -->
         <div class="card">
-            <div class="card-body">
-                <div class="table-responsive text-nowrap">
-                    {{ $dataTable->table() }}
+            <form
+                action="{{ route('admin.jurusan.update', $jurusan->id) }}"
+                method="post"
+            >
+                @csrf
+                @method('PUT')
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 mb-6">
+                            <label class="form-label">
+                                Nama Jurusan
+                            </label>
+                            <input
+                                type="text"
+                                name="name"
+                                class="form-control"
+                                placeholder="Masukkan Jurusan"
+                                required
+                                value="{{ $jurusan->name }}"
+                            >
+                        </div>
+                        <div class="col-12 mb-6">
+                            <label class="form-label">
+                                Deskripsi
+                            </label>
+                            <input
+                                type="text"
+                                name="description"
+                                class="form-control"
+                                placeholder="Masukkan Deskripsi"
+                                required
+                                value="{{ $jurusan->description }}"
+                            >
+                        </div>
+                    </div>
                 </div>
-            </div>
+                <div class="card-footer">
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                    >Simpan</button>
+                </div>
+            </form>
         </div>
         <!-- end table -->
     </div>
 @endsection
-
-@push('modal')
-    <div
-        class="modal fade"
-        id="basicModal"
-        tabindex="-1"
-        style="display: none;"
-        aria-hidden="true"
-    >
-        <div
-            class="modal-dialog"
-            role="document"
-        >
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5
-                        class="modal-title"
-                        id="exampleModalLabel1"
-                    >Tambah Jurusan</h5>
-                    <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                    ></button>
-                </div>
-                <form
-                    action="#"
-                    method="post"
-                    enctype="multipart/form-data"
-                >
-                    @csrf
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-12 mb-6">
-                                <label class="form-label">
-                                    Judul
-                                </label>
-                                <input
-                                    type="text"
-                                    name="title"
-                                    class="form-control"
-                                    placeholder="Masukkan Judul"
-                                >
-                            </div>
-                            <div class="col-12 mb-6">
-                                <label class="form-label">
-                                    Gambar
-                                </label>
-                                <input
-                                    type="file"
-                                    name="image"
-                                    class="form-control"
-                                >
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button
-                            type="button"
-                            class="btn btn-label-secondary"
-                            data-bs-dismiss="modal"
-                        >Close</button>
-                        <button
-                            type="submit"
-                            class="btn btn-primary"
-                        >Simpan</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-@endpush
-
-@push('scripts')
-    {{ $dataTable->scripts() }}
-    <script src="{{ asset('assets/datatables/datatables-bootstrap5.js') }}"></script>
-@endpush

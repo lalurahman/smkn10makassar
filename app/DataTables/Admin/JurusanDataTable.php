@@ -24,6 +24,7 @@ class JurusanDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
+                $edit = route('admin.jurusan.edit', $row->id);
                 return <<<BLADE
                     <div class="d-flex justify-content-center">
                         <div class="btn-group">
@@ -31,7 +32,7 @@ class JurusanDataTable extends DataTable
                                 Aksi
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Edit</a></li>
+                                <li><a class="dropdown-item" href="$edit">Edit</a></li>
                                 <li><button class="dropdown-item text-danger btn-delete" data-id="{$row->id}">Hapus</button></li>
                             </ul>
                         </div>
@@ -72,6 +73,7 @@ class JurusanDataTable extends DataTable
         return [
             Column::computed('No')->data('DT_RowIndex'),
             Column::make('name'),
+            Column::make('description'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
