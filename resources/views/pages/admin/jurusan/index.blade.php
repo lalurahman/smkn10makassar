@@ -69,7 +69,7 @@
                     ></button>
                 </div>
                 <form
-                    action="#"
+                    action="{{ route('admin.jurusan.store') }}"
                     method="post"
                     enctype="multipart/form-data"
                 >
@@ -85,6 +85,18 @@
                                     name="name"
                                     class="form-control"
                                     placeholder="Masukkan Jurusan"
+                                    required
+                                >
+                            </div>
+                            <div class="col-12 mb-6">
+                                <label class="form-label">
+                                    Deskripsi
+                                </label>
+                                <input
+                                    type="text"
+                                    name="description"
+                                    class="form-control"
+                                    placeholder="Masukkan Deskripsi"
                                 >
                             </div>
                         </div>
@@ -108,7 +120,7 @@
 
 @push('scripts')
     {{ $dataTable->scripts() }}
-    <script src="{{ asset('assets/datatables/datatables-bootstrap5.js') }}"></script>
+    <script src="{{ asset('admin/datatables/datatables-bootstrap5.js') }}"></script>
     <script>
         $(document).ready(function() {
             const datatable = $('#jurusan-table');
@@ -132,7 +144,7 @@
                         $.ajax({
                             type: 'POST',
                             dataType: 'json',
-                            url: ''.replace(
+                            url: '{{ route('admin.jurusan.destroy', ':id') }}'.replace(
                                 ':id', id),
                             data: {
                                 _method: 'DELETE',

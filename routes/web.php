@@ -21,6 +21,10 @@ Route::prefix('admin')
             ->name('jurusan.')
             ->group(function () {
                 Route::get('/', [JurusanController::class, 'index'])->name('index');
+                Route::post('/', [JurusanController::class, 'store'])->name('store');
+                Route::get('/{id}', [JurusanController::class, 'edit'])->name('edit');
+                Route::put('/{id}', [JurusanController::class, 'update'])->name('update');
+                Route::delete('/{id}', [JurusanController::class, 'destroy'])->name('destroy');
             });
     });
 

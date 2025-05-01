@@ -8,11 +8,14 @@
             href="{{ route('admin.dashboard') }}"
             class="app-brand-link"
         >
-            <span class="app-brand-text demo menu-text fw-bold ms-2">
+            <span class="app-brand-text demo menu-text fw-bold">
                 <img
                     src="{{ asset('admin/img/logo.png') }}"
                     width="100"
                 >
+            </span>
+            <span class="app-brand-text menu-text fw-bolder">SMKN 10 <br>
+                MAKASSAR
             </span>
         </a>
 
@@ -43,7 +46,7 @@
             <span class="menu-header-text">Admin</span>
         </li>
 
-        <li class="menu-item @if (request()->is('admin/banner*')) active open @endif">
+        <li class="menu-item @if (request()->is('admin/jurusan*')) active open @endif">
             <a
                 href="javascript:void(0);"
                 class="menu-link menu-toggle"
