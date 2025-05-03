@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use App\Models\Berita;
+use App\Models\Kategori;
 
 class BeritaController extends Controller
 {
@@ -18,8 +19,19 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        $berita = Berita::latest()->paginate(10);
-        return view('pages.admin.berita.index', compact('berita'));
+        // $berita = Berita::latest()->paginate(10);
+        // $berita = Berita::with('kategori')->get();
+        
+        $berita = DB::table('berita')
+        ->join('kategori', 'berita.kategori_berita_id', '=', 'kategori.id')
+        ->select('berita.*', 'kategori.nama as nama')
+        ->paginate(10);
+        
+        $kategori = Kategori::All();
+
+
+
+        return view('pages.admin.berita.index', compact('berita','kategori'));
     }
 
     /**
@@ -35,21 +47,16 @@ class BeritaController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            DB::beginTransaction();
-            $data = $request->all();
-            $request->validate([
-                'name' => 'required|string|max:255|unique:beritas,name',
-                'description' => 'nullable|string|max:255',
-            ]);
-            Berita::create($data);
-            DB::commit();
-            return back()->with('success', 'Berita created successfully');
-        } catch (\Throwable $th) {
-            DB::rollBack();
-            return back()->with('error', 'Failed to create Berita: ' . $th->getMessage());
-        }
-    
+        $validated = $request->validate([
+            'judul' => 'required|string|max:255',
+            'isi' => 'required',
+        ]);
+        $validated['slug'] = Str::slug($validated['judul']);
+        $validated['kategori_berita_id'] = $request->kategori_berita_id;
+        $validated['penulis'] = $request->penulis;
+        Berita::create($validated);
+   
+        return redirect()->route('admin.berita.index')->with('success', 'Berita berhasil ditambahkan');
     }
 
     /**

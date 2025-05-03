@@ -76,7 +76,7 @@
         </li>
         <li class="menu-item @if (request()->is('admin/finance')) active open @endif">
             <a
-                href="#"
+                href="{{route('admin.berita.index')}}"
                 class="menu-link"
             >
                 <i class="menu-icon icon-base bx bxs-receipt"></i>

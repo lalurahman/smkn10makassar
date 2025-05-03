@@ -3,174 +3,115 @@
 @section('title', 'Berita')
 
 @section('content')
-    <div class="container-xxl flex-grow-1 container-p-y">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb breadcrumb-custom-icon">
-                <li class="breadcrumb-item">
-                    <a href="javascript:void(0);">Admin</a>
-                    <i class="breadcrumb-icon icon-base bx bx-chevron-right align-middle"></i>
-                </li>
-                <li class="breadcrumb-item active">Berita</li>
-            </ol>
-        </nav>
-        <div
-            class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-6 row-gap-4">
-            <div class="d-flex flex-column justify-content-center">
-                <h4 class="mb-1">Berita</h4>
-            </div>
-            <div class="d-flex align-content-center flex-wrap gap-4">
-                <button
-                    type="button"
-                    class="btn btn-primary"
-                    data-bs-toggle="modal"
-                    data-bs-target="#basicModal"
-                >
-                    <i class="icon-base bx bx-plus icon-sm me-0 me-sm-2"></i>
-                    Tambah Data
-                </button>
-            </div>
-        </div>
-
-        <!-- table -->
-        <div class="card">
-            <div class="card-body">
-                <div class="table-responsive text-nowrap">
-                    <h1>disini tabel tapi gak tau pake yajra</h1>
-                    {{-- {{ $dataTable->table() }} --}}
+    
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="p-6">
+                <h1 class="text-xl font-bold mb-4">Daftar Berita</h1>
+                {{-- <a href="{{ route('') }}" class="mb-4 inline-block bg-blue-500 text-white px-4 py-2 rounded">Tambah Berita</a> --}}
+                <div class="mb-5">
+                    <!-- Tombol -->
+                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCreate">+ Tambah Berita</a>
+        
                 </div>
+        
+                <table class="w-full border">
+                    <thead>
+                        <tr class="bg-gray-100">
+                            <th class="border px-4 py-2">Judul</th>
+                            <th class="border px-4 py-2">Isi</th>
+                            <th class="border px-4 py-2">Kategori</th>
+                            <th class="border px-4 py-2">Penulis</th>
+                            <th class="border px-4 py-2">Ditulis pada</th>
+                            <th class="border px-4 py-2">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($berita as $b)
+                            <tr>
+                                <td class="border px-4 py-2">{{ $b->judul }}</td>
+                                <td class="border px-4 py-2">{{ $b->isi }}</td>
+                                <td class="border px-4 py-2">{{ $b->nama}}</td>
+                                <td class="border px-4 py-2">{{ $b->penulis }}</td>
+                                <td class="border px-4 py-2">{{ $b->created_at}}</td>
+                                <td class="border px-4 py-2">
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <a href="#" class="text-primary hover:text-blue-600">
+                                            <i class="bi bi-eye fs-5"></i>
+                                        </a>
+                                        <a href="#" class="text-warning hover:text-orange-600">
+                                            <i class="bi bi-pencil-square fs-5"></i>
+                                        </a>
+                                        <a href="#" class="text-danger hover:text-red-600">
+                                            <i class="bi bi-trash fs-5"></i>
+                                        </a>
+                                        
+                                    </div>
+                                </td>
+                               
+                                    <!-- Edit/Delete buttons -->
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
-        <!-- end table -->
     </div>
+</div>
+    
 @endsection
 
-@push('modal')
-    <div
-        class="modal fade"
-        id="basicModal"
-        tabindex="-1"
-        style="display: none;"
-        aria-hidden="true"
-    >
-        <div
-            class="modal-dialog"
-            role="document"
-        >
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5
-                        class="modal-title"
-                        id="exampleModalLabel1"
-                    >Tambah Jurusan</h5>
-                    <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                    ></button>
+
+<!-- Modal -->
+<div class="modal fade" id="modalCreate" tabindex="-1" aria-labelledby="modalCreateLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form method="POST" action="{{ route('admin.berita.store') }}">
+        @csrf
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCreateLabel">Tambah Berita</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="judul" class="form-label">Judul</label>
+                    <input type="text" name="judul" class="form-control" required>
                 </div>
-                <form
-                    action="{{ route('admin.jurusan.store') }}"
-                    method="post"
-                    enctype="multipart/form-data"
-                >
-                    @csrf
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-12 mb-6">
-                                <label class="form-label">
-                                    Nama Jurusan
-                                </label>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    class="form-control"
-                                    placeholder="Masukkan Jurusan"
-                                    required
-                                >
-                            </div>
-                            <div class="col-12 mb-6">
-                                <label class="form-label">
-                                    Deskripsi
-                                </label>
-                                <input
-                                    type="text"
-                                    name="description"
-                                    class="form-control"
-                                    placeholder="Masukkan Deskripsi"
-                                >
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button
-                            type="button"
-                            class="btn btn-label-secondary"
-                            data-bs-dismiss="modal"
-                        >Close</button>
-                        <button
-                            type="submit"
-                            class="btn btn-primary"
-                        >Simpan</button>
-                    </div>
-                </form>
+                <div class="mb-3">
+                    <label for="isi" class="form-label">Isi</label>
+                    <textarea name="isi" class="form-control" rows="4" required></textarea>
+                </div>
+                {{-- <div class="mb-3">
+                    <label for="kategori" class="form-label">Kategori</label>
+                    <textarea name="kategori" class="form-control" rows="4" required></textarea>
+                </div> --}}
+                <div class="mb-3">
+                    <label for="kategori_id" class="form-label">Kategori</label>
+                    <select name="kategori_berita_id" class="form-control" required>
+                        <option value="">-- Pilih Kategori --</option>
+                        @foreach($kategori as $kategori)
+                            <option value="{{ $kategori->id }}">{{ $kategori->nama }}</option>
+                            {{-- {{dd($kategori-> all())}} --}}
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="penulis" class="form-label">Penulis</label>
+                    <input type="text" name="penulis" class="form-control" required>
+                </div>
+                {{-- <div class="mb-3">
+                    <label for="tanggal" class="form-label">Tanggal</label>
+                    <input type="date" name="ditampilkan_pada" class="form-control" required>
+                </div> --}}
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success">Simpan</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
             </div>
         </div>
-    </div>
-@endpush
-
-{{-- @push('scripts')
-    {{ $dataTable->scripts() }}
-    <script src="{{ asset('admin/datatables/datatables-bootstrap5.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-            const datatable = $('#jurusan-table');
-            $(document).on('click', '.btn-delete', function(e) {
-                e.preventDefault();
-
-                const _ = $(this);
-
-                Swal.fire({
-                    title: 'Apakah anda yakin?',
-                    text: "Tindakan ini akan menghapus data secara permanen!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ya, saya yakin!',
-                    cancelButtonText: 'Batal'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        var id = _.data('id');
-                        $.ajax({
-                            type: 'POST',
-                            dataType: 'json',
-                            url: '{{ route('admin.jurusan.destroy', ':id') }}'.replace(
-                                ':id', id),
-                            data: {
-                                _method: 'DELETE',
-                                _token: '{{ csrf_token() }}'
-                            },
-                            success: function(res) {
-                                Swal.fire({
-                                    title: 'Berhasil!',
-                                    text: res.message,
-                                    icon: 'success'
-                                }).then(function() {
-                                    datatable.DataTable().ajax.reload();
-                                });
-                            },
-                            error: function(res) {
-                                Swal.fire({
-                                    title: 'Gagal!',
-                                    text: res.responseJSON.message,
-                                    icon: 'error'
-                                });
-                            }
-                        });
-                    }
-                });
-            });
-        })
-    </script>
-@endpush --}}
+    </form>
+  </div>
+</div>
