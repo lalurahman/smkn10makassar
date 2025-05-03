@@ -14,8 +14,15 @@ class AuthenticatedSessionController extends Controller
     /**
      * Display the login view.
      */
+    // public function create(): View
+    // {
+    //     // dd('Controller bekerja!'); // Dump and Die
+    //     return view('auth.login');
+    // }
+    
     public function create(): View
     {
+        // dd('Controller bekerja!'); // Dump and Die
         return view('auth.login');
     }
 
@@ -24,6 +31,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        // dd('store bekerja');
         $request->authenticate();
 
         $request->session()->regenerate();

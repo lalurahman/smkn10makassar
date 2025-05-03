@@ -26,6 +26,8 @@
     @yield('content')
   </main>
 
+  
+
  @include('layouts.guest_partials.footer_guest')
       </div>
     </div>

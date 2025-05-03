@@ -206,71 +206,71 @@
   
             <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="100">
               <div class="features-item">
-                <i class="bi bi-eye" style="color: #ffbb2c;"></i>
+                <i class="bi bi-lightning-charge" style="color: #ffbb2c;"></i>
                 <h3><a href="" class="stretched-link">Teknik Instalasi Tenaga Listrik</a></h3>
               </div>
             </div><!-- End Feature Item -->
   
             <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="200">
               <div class="features-item">
-                <i class="bi bi-infinity" style="color: #5578ff;"></i>
+                <i class="bi bi-gear-wide-connected" style="color: #2b3c5c;"></i>
                 <h3><a href="" class="stretched-link">Teknik Permesinan</a></h3>
               </div>
             </div><!-- End Feature Item -->
   
             <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="300">
               <div class="features-item">
-                <i class="bi bi-mortarboard" style="color: #e80368;"></i>
+                <i class="bi bi-fire" style="color: #e80368;"></i>
                 <h3><a href="" class="stretched-link">Teknik Pengelasan</a></h3>
               </div>
             </div><!-- End Feature Item -->
   
             <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="400">
               <div class="features-item">
-                <i class="bi bi-nut" style="color: #e361ff;"></i>
+                <i class="bi bi-truck-front" style="color: #61c0ff;"></i>
                 <h3><a href="" class="stretched-link">Teknik Kendaraan Ringan Otomotif</a></h3>
               </div>
             </div><!-- End Feature Item -->
   
             <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="500">
               <div class="features-item">
-                <i class="bi bi-shuffle" style="color: #47aeff;"></i>
+                <i class="bi bi-tools" style="color: #47aeff;"></i>
                 <h3><a href="" class="stretched-link">Teknik Bisnis Sepeda Motor</a></h3>
               </div>
             </div><!-- End Feature Item -->
   
             <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="600">
               <div class="features-item">
-                <i class="bi bi-star" style="color: #ffa76e;"></i>
+                <i class="bi bi-camera-reels" style="color: #ffa76e;"></i>
                 <h3><a href="" class="stretched-link">Teknik Audio Visual</a></h3>
               </div>
             </div><!-- End Feature Item -->
   
             <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="700">
               <div class="features-item">
-                <i class="bi bi-x-diamond" style="color: #11dbcf;"></i>
+                <i class="bi bi-cpu" style="color: #11dbcf;"></i>
                 <h3><a href="" class="stretched-link">Teknik Elektronika Industri</a></h3>
               </div>
             </div><!-- End Feature Item -->
   
             <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="800">
               <div class="features-item">
-                <i class="bi bi-camera-video" style="color: #4233ff;"></i>
+                <i class="bi bi-house-gear" style="color: #4233ff;"></i>
                 <h3><a href="" class="stretched-link">Bisnis Konstruksi dan Properti</a></h3>
               </div>
             </div><!-- End Feature Item -->
   
             <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="900">
               <div class="features-item">
-                <i class="bi bi-command" style="color: #b2904f;"></i>
+                <i class="bi bi-rulers" style="color: #b2904f;"></i>
                 <h3><a href="" class="stretched-link">Desain Permodelan dan Informasi</a></h3>
               </div>
             </div><!-- End Feature Item -->
   
             <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="1000">
               <div class="features-item">
-                <i class="bi bi-dribbble" style="color: #b20969;"></i>
-                <h3><a href="" class="stretched-link">Teknik Komputer dan Komputer</a></h3>
+                <i class="bi bi-router" style="color: #09b212;"></i>
+                <h3><a href="" class="stretched-link">Teknik Komputer dan Jaringan</a></h3>
               </div>
             </div><!-- End Feature Item -->
   
@@ -465,7 +465,7 @@
           
           <div class="container">
               <div class="d-flex mt-4 justify-content-center" data-aos="fade-up" data-aos-delay="300">
-                <a href="courses.html" class="btn btn-success">Semua Guru Kami</a>
+                <a href="courses.html" class="btn btn-primary">Semua Guru Kami</a>
               </div>
           </div>
   
